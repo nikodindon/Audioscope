@@ -13,5 +13,7 @@ def transcribe(audio_path):
     base = settings.llama_cpp_base_url.rstrip("/")
     with open(audio_path,"rb") as f:
         r = httpx.post(f"{base}/audio/transcriptions", files={"file":(os.path.basename(audio_path),f)}, data={"model":settings.llama_cpp_model}, timeout=600)
+    if r.status_code==501:
+        raise RuntimeError("Ce serveur llama.cpp ne prend pas en charge /audio/transcriptions (501). Le modèle expose uniquement la complétion texte; la transcription audio n'est pas disponible via cette API.")
     r.raise_for_status()
     return r.json()
