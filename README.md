@@ -453,20 +453,20 @@ Ces analyses doivent rester distinctes des données brutes de transcription. Une
 
 Objectif : importer une vidéo, la transcrire et la regarder avec les sous-titres.
 
-- [ ] Initialiser le dépôt et la structure du projet.
-- [ ] Créer l'interface web.
-- [ ] Ajouter la bibliothèque vidéo.
-- [ ] Importer une URL YouTube.
-- [ ] Télécharger le média avec `yt-dlp`.
-- [ ] Extraire et préparer l'audio avec FFmpeg.
-- [ ] Se connecter au serveur `llama.cpp` existant.
-- [ ] Transcrire l'audio et conserver les métadonnées disponibles.
-- [ ] Générer SRT et WebVTT à partir des horodatages disponibles.
-- [ ] Lire la vidéo locale avec les sous-titres activables.
-- [ ] Synchroniser la transcription et le lecteur.
-- [ ] Ajouter l'export TXT, JSON, SRT et VTT.
-- [ ] Persister les tâches et les résultats dans SQLite.
-- [ ] Ajouter une page de configuration et un diagnostic du serveur d'inférence.
+- [x] Initialiser le dépôt et la structure du projet.
+- [x] Créer l'interface web.
+- [x] Ajouter la bibliothèque vidéo.
+- [x] Importer une URL YouTube.
+- [x] Télécharger le média avec `yt-dlp`.
+- [x] Extraire et préparer l'audio avec FFmpeg.
+- [x] Se connecter au serveur `llama.cpp` existant.
+- [x] Transcrire l'audio et conserver les métadonnées disponibles.
+- [x] Générer SRT et WebVTT à partir des horodatages disponibles.
+- [x] Lire la vidéo locale avec les sous-titres activables.
+- [x] Synchroniser la transcription et le lecteur.
+- [x] Ajouter l'export TXT, JSON, SRT et VTT.
+- [x] Persister les tâches et les résultats dans SQLite.
+- [x] Ajouter une page de configuration et un diagnostic du serveur d'inférence.
 
 **Livrable :** une application locale utilisable de bout en bout.
 
