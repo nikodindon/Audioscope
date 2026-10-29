@@ -816,3 +816,37 @@ AudioScope commence par un problème concret : **transformer une URL YouTube en 
 Sa particularité est de ne pas s'arrêter à la transcription. Le lecteur, les sous-titres incrustés, la navigation par intervenant et la recherche dans les vidéos constituent le socle d'un outil de recherche audiovisuelle.
 
 La priorité reste une première version fiable, qui exploite le serveur `llama.cpp` existant, gère correctement les fichiers et fournit une vraie interface web. Les fonctions d'analyse des débats viendront ensuite, en s'appuyant sur des transcriptions et des horodatages dont les limites sont clairement identifiées.
+
+---
+
+## Test local du MVP
+
+### Prérequis
+- Python 3.12+, Node.js LTS, FFmpeg, yt-dlp
+- Serveur `llama.cpp` déjà démarré sur `100.91.114.49:8080`
+
+### Backend
+```bash
+cd /home/niko/projects/audioscope/backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+cd /home/niko/projects/audioscope
+cp .env.example .env
+uvicorn app.main:app --app-dir backend --reload --host 127.0.0.1 --port 8000
+```
+Endpoints : `/health`, `/config`, `/inference/check`.
+
+### Import / transcription
+```bash
+curl -X POST http://127.0.0.1:8000/import -H 'Content-Type: application/json' -d '{"url":"https://www.youtube.com/watch?v=..."}'
+```
+Résultats dans `data/` (library, audio, transcripts, subtitles) et SQLite `data/audioscope.db`.
+
+### Frontend
+```bash
+cd /home/niko/projects/audioscope/frontend
+npm install
+npm run dev
+```
+Ouvrir http://localhost:5173.
