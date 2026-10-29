@@ -4,5 +4,5 @@ def download(url, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     vid = uuid.uuid4().hex[:12]
     path = os.path.join(out_dir, f"{vid}.mp4")
-    subprocess.run([sys.executable, "-m", "yt_dlp", "--js-runtimes", "node", "-f", "best[ext=mp4]/best", "-o", path, url], check=True)
+    subprocess.run([sys.executable, "-m", "yt_dlp", "--no-playlist", "-o", path, url], check=True)
     return vid, path
