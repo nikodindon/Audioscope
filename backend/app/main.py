@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.db.database import Base, engine
+import app.db.models  # noqa
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="AudioScope", version="0.1.0")
